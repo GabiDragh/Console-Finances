@@ -94,7 +94,7 @@ var monthsIncluded = finances.length;
 
 console.log("Total months: " + monthsIncluded); //total months included in the data sheet
 
-let sum = 0;
+let sum = 0; //calculation for net total amount
 
 for (let i = 0; i < finances.length; i++0) {
   sum += finances[i];
