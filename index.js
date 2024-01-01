@@ -119,16 +119,34 @@ console.log("Total: $" + sum); //Net total amount printed in the console
 
 //Average of changes in Profit/Loses over the entire period
 
-var totalChanges = 0; //define total changes variable
+var changes = 0; //define total changes variable
 
 for (var i = 1; i < finances.length; i++) { //loop through the multidimensional array
   var monthlyProfit = finances[i][1]; //define current month profit variable inside multidimensional array and selecting the second element in the array
   var monthlyProfitPrevious = finances[i - 1][1];//define previous month profit variable inside multidimensional array and selecting the second element in the array
-  var changes = monthlyProfit - monthlyProfitPrevious; //define changes variable by substracting previous month profit from current month profit
-  totalChanges += changes; //sum all monthly changes
+  var monthlyChanges = monthlyProfit - monthlyProfitPrevious; //define changes variable by substracting previous month profit from current month profit
+  changes += monthlyChanges; //sum all monthly changes
 }
 
-averageChange = totalChanges/(monthsIncluded-1); //calculate the average monthly profit by dividing the sum of all monthly changes by the number of total months -1 
+averageChange = changes/(monthsIncluded-1); //calculate the average monthly profit by dividing the sum of all monthly changes by the number of total months -1 
 
-console.log("Average Change:", averageChange); //display answer in console
+console.log("Average Change:", averageChange.toFixed(2)); //display answer in console rounded up to 2 decimals
 
+
+//Greatest increase in Profits/Losses (date and difference) over the entire period4
+
+var greatestIncrease = 0; //define a variable for greatest increase to be displayed in console
+var greatestIncreaseMonth; //define a variable for the greatest increase month to be diplayed in console
+
+for (var i = 1; i < finances.length; i++) { //same logic as per average of changes calculations above
+  var monthlyProfit = finances[i][1];
+  var monthlyProfitPrevious = finances[i - 1][1];
+  var monthlyChanges = monthlyProfit - monthlyProfitPrevious;
+  
+  if (monthlyChanges > greatestIncrease) { //loop through monthly changes calculations and if the monthly changes are bigger than the previous greatest increase, then the monthly increase variable gets updated until the greatest increase is found
+    greatestIncrease = monthlyChanges; //when greatest increase is found, the monthly changes are updated
+    greatestIncreaseMonth = finances[i][0]; //define greatest increase month by looping through the multidimensional array and selecting the first position element, in this case the text string
+  }
+}
+
+console.log(`Greatest increase in Profits/Losses: ${greatestIncreaseMonth} ($${greatestIncrease})`); //display answer in console month first then the greatest increase value
