@@ -93,37 +93,42 @@ var finances = [
 console.log("Financial Analysis");
 console.log("------------------");
 
+
 //Total number of months included in the datasheet calculation
 
 var monthsIncluded = finances.length; //define variable for finances length (not mandatory for this step as we could use finances.lenght straight into console.log, but months.Included variable will be used later in the calculations)
 
 console.log("Total months: " + monthsIncluded); //print total months included in the data sheet
 
+
 //The net total amount of Profit/Loses calculation
 
 var sum = 0; //define sum variable
 
 for (var i = 0; i < finances.length; i++) { //loop through the multidimensional array elements
-  for (var j = 0; j < finances[i].length; j++) { //loop through each array inside the multidimensional array
-    var element = finances[i][j]; 
-    if (typeof element === "number") { // Select the number element inside each array in the multidimensional array
-      sum += element; //add each number element inside the multidimensional array
-    }
-  }
+  //for (var j = 0; j < finances[i].length; j++) { //loop through each array inside the multidimensional array
+    //var element = finances[i][j]; 
+    //if (typeof element === "number") { // Select the number element inside each array in the multidimensional array
+      sum += finances[i][1]; //add each number element inside the multidimensional array
+    //}
+  //}
 }
 
 console.log("Total: $" + sum); //Net total amount printed in the console
 
+
 //Average of changes in Profit/Loses over the entire period
 
-var average = 0; //define sum variable
+var totalChanges = 0; //define total changes variable
 
-for (var i = 0; i < finances.length; i++) { //loop through the multidimensional array elements
-  for (var j = 0; j < finances[i].length; j++) { //loop through each array inside the multidimensional array
-    var element = finances[i][j]; 
-    if (typeof element === "number") { // Select the number element inside each array in the multidimensional array
-      sum += element; //add each number element inside the multidimensional array
-    }
-  }
+for (var i = 1; i < finances.length; i++) { //loop through the multidimensional array
+  var monthlyProfit = finances[i][1]; //define current month profit variable inside multidimensional array and selecting the second element in the array
+  var monthlyProfitPrevious = finances[i - 1][1];//define previous month profit variable inside multidimensional array and selecting the second element in the array
+  var changes = monthlyProfit - monthlyProfitPrevious; //define changes variable by substracting previous month profit from current month profit
+  totalChanges += changes; //sum all monthly changes
 }
+
+averageChange = totalChanges/(monthsIncluded-1); //calculate the average monthly profit by dividing the sum of all monthly changes by the number of total months -1 
+
+console.log("Average Change:", averageChange); //display answer in console
 
