@@ -133,7 +133,7 @@ averageChange = changes/(monthsIncluded-1); //calculate the average monthly prof
 console.log("Average Change:", averageChange.toFixed(2)); //display answer in console rounded up to 2 decimals
 
 
-//Greatest increase in Profits/Losses (date and difference) over the entire period4
+//Greatest increase in Profits/Losses (date and difference) over the entire period
 
 var greatestIncrease = 0; //define a variable for greatest increase to be displayed in console
 var greatestIncreaseMonth; //define a variable for the greatest increase month to be diplayed in console
@@ -150,3 +150,21 @@ for (var i = 1; i < finances.length; i++) { //same logic as per average of chang
 }
 
 console.log(`Greatest increase in Profits/Losses: ${greatestIncreaseMonth} ($${greatestIncrease})`); //display answer in console month first then the greatest increase value
+
+//Greatest decrease in Profits/Losses (date and difference) over the entire period
+
+var greatestDecrease = 0; //define a variable for greatest decrease to be displayed in console
+var greatestDecreaseMonth; //define a variable for the greatest decrease month to be diplayed in console
+
+for (var i = 1; i < finances.length; i++) { //same logic as per average of changes and greatest profits/losses calculations above
+  var monthlyProfit = finances[i][1];
+  var monthlyProfitPrevious = finances[i - 1][1];
+  var monthlyChanges = monthlyProfitPrevious - monthlyProfit; //variables swapped around for decrease of profits/losses calculation
+  
+  if (monthlyChanges > greatestDecrease) { //loop through monthly changes calculations and if the monthly changes are bigger than the previous greatest decrease, then the monthly decrease variable gets updated until the greatest decrease is found
+    greatestDecrease = monthlyChanges; //when greatest decrease is found, the monthly changes are updated
+    greatestDecreaseMonth = finances[i][0]; //define greatest decrease month by looping through the multidimensional array and selecting the first position element, in this case the month text string
+  }
+}
+
+console.log(`Greatest decrease in Profits/Losses: ${greatestDecreaseMonth} ($-${greatestDecrease})`); //display answer in console month first then the greatest decrease value with the changed sign to show it is a decrease
