@@ -1,4 +1,6 @@
-var finances = [
+//Unit 4 Challenge - Console Finances
+
+var finances = [ //financial dataset already provided, containing arrays with two elements each, Date and Profit/Losses
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
   ['Mar-2010', 322013],
@@ -149,7 +151,8 @@ for (var i = 1; i < finances.length; i++) { //same logic as per average of chang
   }
 }
 
-console.log(`Greatest increase in Profits/Losses: ${greatestIncreaseMonth} ($${greatestIncrease})`); //display answer in console month first then the greatest increase value
+console.log(`Greatest Increase in Profits/Losses: ${greatestIncreaseMonth} ($${greatestIncrease})`); //display answer in console month first then the greatest increase value
+
 
 //Greatest decrease in Profits/Losses (date and difference) over the entire period
 
@@ -167,4 +170,4 @@ for (var i = 1; i < finances.length; i++) { //same logic as per average of chang
   }
 }
 
-console.log(`Greatest decrease in Profits/Losses: ${greatestDecreaseMonth} ($-${greatestDecrease})`); //display answer in console month first then the greatest decrease value with the changed sign to show it is a decrease
+console.log(`Greatest Decrease in Profits/Losses: ${greatestDecreaseMonth} ($-${greatestDecrease})`); //display answer in console month first then the greatest decrease value with the changed sign to show it is a decrease
