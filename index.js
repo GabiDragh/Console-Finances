@@ -87,17 +87,43 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
+
+//Print table head
+
 console.log("Financial Analysis");
 console.log("------------------");
 
-var monthsIncluded = finances.length;
+//Total number of months included in the datasheet calculation
 
-console.log("Total months: " + monthsIncluded); //total months included in the data sheet
+var monthsIncluded = finances.length; //define variable for finances length (not mandatory for this step as we could use finances.lenght straight into console.log, but months.Included variable will be used later in the calculations)
 
-let sum = 0; //calculation for net total amount
+console.log("Total months: " + monthsIncluded); //print total months included in the data sheet
 
-for (let i = 0; i < finances.length; i++0) {
-  sum += finances[i];
+//The net total amount of Profit/Loses calculation
+
+var sum = 0; //define sum variable
+
+for (var i = 0; i < finances.length; i++) { //loop through the multidimensional array elements
+  for (var j = 0; j < finances[i].length; j++) { //loop through each array inside the multidimensional array
+    var element = finances[i][j]; 
+    if (typeof element === "number") { // Select the number element inside each array in the multidimensional array
+      sum += element; //add each number element inside the multidimensional array
+    }
+  }
 }
 
-console.log(sum);
+console.log("Total: $" + sum); //Net total amount printed in the console
+
+//Average of changes in Profit/Loses over the entire period
+
+var average = 0; //define sum variable
+
+for (var i = 0; i < finances.length; i++) { //loop through the multidimensional array elements
+  for (var j = 0; j < finances[i].length; j++) { //loop through each array inside the multidimensional array
+    var element = finances[i][j]; 
+    if (typeof element === "number") { // Select the number element inside each array in the multidimensional array
+      sum += element; //add each number element inside the multidimensional array
+    }
+  }
+}
+
